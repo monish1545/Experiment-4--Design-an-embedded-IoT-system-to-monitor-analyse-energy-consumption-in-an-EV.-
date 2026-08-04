@@ -75,7 +75,8 @@ grid on;
 ```
  
 ## MATLAB OUTPUT
-<img width="822" height="522" alt="image" src="https://github.com/user-attachments/assets/81ddfab5-a919-4e56-be57-ce99190c4fbf" />
+<img width="820" height="847" alt="image" src="https://github.com/user-attachments/assets/2fef378d-1997-4350-a142-4a98e995d3b7" />
+
 
  
   
