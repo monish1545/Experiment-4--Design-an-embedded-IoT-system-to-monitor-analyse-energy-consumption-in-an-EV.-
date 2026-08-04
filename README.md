@@ -23,7 +23,56 @@ Instead of using ThingSpeak, this experiment simulates real-time sensor data usi
 •	Plot graphs for power and energy consumption trends.
  
 ## MATLAB CODE (WITHOUT THINGSPEAK)
+```
+clear; clc; close all;
 
+% Simulation Parameters
+timeDuration = 60; % Simulation time in minutes
+timeStep = 1; % Time step in minutes
+
+% Simulated voltage and current data (Example: EV under different conditions)
+voltageData = 360 + 10 * randn(1, timeDuration); % Voltage fluctuates around 360V
+currentData = 50 + 5 * randn(1, timeDuration);   % Current fluctuates around 50A
+
+% Initialize arrays for power and energy consumption
+powerData = zeros(1, timeDuration);
+energyData = zeros(1, timeDuration);
+
+% Battery capacity assumption
+batteryCapacity = 40 * 1000; % 40 kWh converted to Wh
+
+% Energy analysis loop
+for t = 1:timeDuration
+    powerData(t) = voltageData(t) * currentData(t); % P = V * I (Watt)
+    energyData(t) = powerData(t) * (timeStep / 60); % Energy in kWh per minute
+end
+
+% Total Energy Consumption
+totalEnergy = sum(energyData); % Total energy used in kWh
+
+% Efficiency Calculation
+efficiency = (totalEnergy / batteryCapacity) * 100; % Efficiency as a percentage
+
+% Display results
+disp(['Total Energy Used: ', num2str(totalEnergy), ' kWh']);
+disp(['Estimated Efficiency: ', num2str(efficiency), ' %']);
+
+% Plot Energy Consumption Over Time
+figure;
+subplot(2,1,1);
+plot(1:timeDuration, powerData, 'b', 'LineWidth', 1.5);
+xlabel('Time (minutes)');
+ylabel('Power (W)');
+title('Power Consumption Over Time');
+grid on;
+
+subplot(2,1,2);
+plot(1:timeDuration, cumsum(energyData), 'r', 'LineWidth', 1.5);
+xlabel('Time (minutes)');
+ylabel('Cumulative Energy (kWh)');
+title('Total Energy Consumption Over Time');
+grid on;
+```
  
 ## MATLAB OUTPUT
 <img width="822" height="522" alt="image" src="https://github.com/user-attachments/assets/81ddfab5-a919-4e56-be57-ce99190c4fbf" />
