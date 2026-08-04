@@ -26,6 +26,7 @@ Instead of using ThingSpeak, this experiment simulates real-time sensor data usi
 
  
 ## MATLAB OUTPUT
+<img width="822" height="522" alt="image" src="https://github.com/user-attachments/assets/81ddfab5-a919-4e56-be57-ce99190c4fbf" />
 
  
   
